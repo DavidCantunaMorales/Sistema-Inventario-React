@@ -34,7 +34,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export const Login = () => {
-  const [credentials, setCredentials] = useState({ nombre: '', password: '' });
+  const [credentials, setCredentials] = useState({ nombre_usuario: '', clave_usuario: '' });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -64,7 +64,7 @@ export const Login = () => {
           data.tipoUsuario
         ); // Nuevo: imprimir el tipo de usuario en la consola
         // navigate('/principal');
-        navigate('/incompleto');
+        navigate('/dashboard');
       } else {
         alert(data.message);
       }
@@ -102,8 +102,8 @@ export const Login = () => {
               required
               fullWidth
               label="Nombre de usuario"
-              name="nombre"
-              value={credentials.nombre}
+              name="nombre_usuario"
+              value={credentials.nombre_usuario}
               onChange={handleChange}
               autoFocus
             />
@@ -113,8 +113,8 @@ export const Login = () => {
               fullWidth
               label="Contraseña"
               type="password"
-              name="password"
-              value={credentials.password}
+              name="clave_usuario"
+              value={credentials.clave_usuario}
               onChange={handleChange}
               autoComplete="current-password"
             />
