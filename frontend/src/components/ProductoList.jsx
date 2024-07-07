@@ -127,13 +127,13 @@ function ProductoList() {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>Nombre</StyledTableCell>
-                <StyledTableCell align="right">Precio</StyledTableCell>
+                <StyledTableCell>NOMBRE</StyledTableCell>
+                <StyledTableCell align="right">PRECIO</StyledTableCell>
                 <StyledTableCell align="right">
-                  Fecha de Expiración
+                  FECHA DE EXPIRACIÓN
                 </StyledTableCell>
-                <StyledTableCell align="right">Categoría</StyledTableCell>
-                <StyledTableCell align="right">Acciones</StyledTableCell>
+                <StyledTableCell align="right">CATEGORÍA</StyledTableCell>
+                <StyledTableCell align="right">ACCIONES</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -154,14 +154,20 @@ function ProductoList() {
                   <StyledTableCell align="right">
                     <Button
                       variant="contained"
-                      color="inherit"
+                      sx={{
+                        backgroundColor: '#FFA000',
+                        color: 'white', // Cambia el color del texto si es necesario
+                        '&:hover': {
+                          backgroundColor: '#FFA001' // Color al hacer hover
+                        }
+                      }}
                       onClick={() => handleOpen(producto.id_producto)}
                     >
                       Editar
                     </Button>
                     <Button
                       variant="contained"
-                      color="warning"
+                      color="error"
                       onClick={() => handleDelete(producto.id_producto)}
                       sx={{ marginLeft: '.5rem' }}
                     >
@@ -186,7 +192,7 @@ function ProductoList() {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} variant="contained" color="secondary">
+            <Button onClick={handleClose} variant="contained" color="warning">
               CANCELAR
             </Button>
           </DialogActions>
