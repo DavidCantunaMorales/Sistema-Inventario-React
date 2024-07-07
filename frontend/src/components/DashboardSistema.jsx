@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Grid, Card, CardContent, Typography, Box } from '@mui/material';
-import { People, Work, LocalShipping, Category, Inventory, Assignment, ArrowDownward, ArrowUpward, TrendingUp } from '@mui/icons-material';
+import {
+  People,
+  Work,
+  LocalShipping,
+  Category,
+  Inventory,
+  Assignment,
+  ArrowDownward,
+  ArrowUpward,
+  TrendingUp
+} from '@mui/icons-material';
 import Navbar from './Navbar.jsx';
 
 const DashboardSistema = () => {
@@ -44,13 +54,13 @@ const DashboardSistema = () => {
     color: 'text.secondary',
     boxShadow: 1,
     borderRadius: 2,
-    border: '1px solid #e0e0e0',
+    border: '1px solid #e0e0e0'
   };
 
   const iconStyles = {
     fontSize: 40,
     color: 'primary.main',
-    mb: 1,
+    mb: 1
   };
 
   const percentageStyles = {
@@ -62,17 +72,17 @@ const DashboardSistema = () => {
     padding: '4px 8px',
     color: '#00796b',
     fontSize: '14px',
-    marginTop: '8px',
+    marginTop: '8px'
   };
 
   const additionalTextStyles = {
     color: '#9e9e9e',
     fontSize: '12px',
-    marginTop: '4px',
+    marginTop: '4px'
   };
 
   const calculatePercentage = (count) => {
-    return (count / 100 * 100).toFixed(1) + '%';
+    return ((count / 100) * 100).toFixed(1) + '%';
   };
 
   const generateAdditionalText = (count) => {
@@ -80,14 +90,54 @@ const DashboardSistema = () => {
   };
 
   const stats = [
-    { key: 'users', title: 'Usuarios', count: usersCount, icon: <People sx={iconStyles} /> },
-    { key: 'roles', title: 'Roles', count: rolesCount, icon: <Work sx={iconStyles} /> },
-    { key: 'providers', title: 'Proveedores', count: providersCount, icon: <LocalShipping sx={iconStyles} /> },
-    { key: 'categories', title: 'Categorías', count: categoriesCount, icon: <Category sx={iconStyles} /> },
-    { key: 'products', title: 'Productos', count: productsCount, icon: <Inventory sx={iconStyles} /> },
-    { key: 'existences', title: 'Existencias', count: existencesCount, icon: <Assignment sx={iconStyles} /> },
-    { key: 'entries', title: 'Entradas', count: entriesCount, icon: <ArrowDownward sx={iconStyles} /> },
-    { key: 'exits', title: 'Salidas', count: exitsCount, icon: <ArrowUpward sx={iconStyles} /> },
+    {
+      key: 'users',
+      title: 'Usuarios',
+      count: usersCount,
+      icon: <People sx={iconStyles} />
+    },
+    {
+      key: 'roles',
+      title: 'Roles',
+      count: rolesCount,
+      icon: <Work sx={iconStyles} />
+    },
+    {
+      key: 'providers',
+      title: 'Proveedores',
+      count: providersCount,
+      icon: <LocalShipping sx={iconStyles} />
+    },
+    {
+      key: 'categories',
+      title: 'Categorías',
+      count: categoriesCount,
+      icon: <Category sx={iconStyles} />
+    },
+    {
+      key: 'products',
+      title: 'Productos',
+      count: productsCount,
+      icon: <Inventory sx={iconStyles} />
+    },
+    {
+      key: 'existences',
+      title: 'Existencias',
+      count: existencesCount,
+      icon: <Assignment sx={iconStyles} />
+    },
+    {
+      key: 'entries',
+      title: 'Entradas',
+      count: entriesCount,
+      icon: <ArrowDownward sx={iconStyles} />
+    },
+    {
+      key: 'exits',
+      title: 'Salidas',
+      count: exitsCount,
+      icon: <ArrowUpward sx={iconStyles} />
+    }
   ];
 
   return (

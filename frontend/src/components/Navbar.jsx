@@ -11,12 +11,17 @@ import {
   Tooltip
 } from '@mui/material';
 import {
-  Person as UserIcon,
-  Store as StoreIcon,
+  Dashboard as DashboardIcon,
+  People as PeopleIcon,
+  LocalShipping,
+  Assignment,
+  Category as CategoryIcon,
+  ProductionQuantityLimits as ProductionQuantityLimitsIcon,
   Inventory as InventoryIcon,
-  Payment as PaymentIcon,
-  Close as CloseIcon,
-  Home as HomeIcon
+  Input as InputIcon,
+  Output as OutputIcon,
+  Report as ReportIcon,
+  Close as CloseIcon
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -56,40 +61,60 @@ const Navbar = () => {
 
     if (tipoUsuario === '1') {
       menuItems.push(
-        { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
-        { text: 'Usuarios', icon: <UserIcon />, link: '/dashUser' },
-        { text: 'Proveedores', icon: <StoreIcon />, link: '/dashProveedor' },
-        { text: 'Categorías', icon: <InventoryIcon />, link: '/dashCategoria' },
-        { text: 'Productos', icon: <InventoryIcon />, link: '/dashProducto' },
-        { text: 'Existencias', icon: <PaymentIcon />, link: '/dashExistencia' },
-        { text: 'Entradas', icon: <PaymentIcon />, link: '/dashEntrada' },
-        { text: 'Salidas', icon: <PaymentIcon />, link: '/dashSalida' },
+        { text: 'Dashboard', icon: <DashboardIcon />, link: '/dashboard' },
+        { text: 'Usuarios', icon: <PeopleIcon />, link: '/dashUser' },
+        {
+          text: 'Proveedores',
+          icon: <LocalShipping />,
+          link: '/dashProveedor'
+        },
+        { text: 'Categorías', icon: <CategoryIcon />, link: '/dashCategoria' },
+        {
+          text: 'Productos',
+          icon: <ProductionQuantityLimitsIcon />,
+          link: '/dashProducto'
+        },
+        {
+          text: 'Existencias',
+          icon: <Assignment />,
+          link: '/dashExistencia'
+        },
+        { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
+        { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
         {
           text: 'Existencias Mínimas',
-          icon: <PaymentIcon />,
+          icon: <ReportIcon />,
           link: '/reporteMinExis'
         }
       );
     } else if (tipoUsuario === '2') {
       menuItems.push(
-        { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
-        { text: 'Existencias', icon: <PaymentIcon />, link: '/dashExistencia' }
+        { text: 'Dashboard', icon: <DashboardIcon />, link: '/dashboard' },
+        {
+          text: 'Existencias',
+          icon: <Assignment />,
+          link: '/dashExistencia'
+        }
       );
     } else if (tipoUsuario === '3') {
       menuItems.push(
-        { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
-        { text: 'Entradas', icon: <PaymentIcon />, link: '/dashEntrada' },
-        { text: 'Salidas', icon: <PaymentIcon />, link: '/dashSalida' },
+        { text: 'Dashboard', icon: <DashboardIcon />, link: '/dashboard' },
+        { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
+        { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
         {
           text: 'Existencias Mínimas',
-          icon: <PaymentIcon />,
+          icon: <ReportIcon />,
           link: '/reporteMinExis'
         }
       );
     } else if (tipoUsuario === '4') {
       menuItems.push(
-        { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
-        { text: 'Proveedores', icon: <StoreIcon />, link: '/dashProveedor' },
+        { text: 'Dashboard', icon: <DashboardIcon />, link: '/dashboard' },
+        {
+          text: 'Proveedores',
+          icon: <LocalShipping />,
+          link: '/dashProveedor'
+        },
         { text: 'Categorías', icon: <InventoryIcon />, link: '/dashCategoria' },
         { text: 'Productos', icon: <InventoryIcon />, link: '/dashProducto' }
       );

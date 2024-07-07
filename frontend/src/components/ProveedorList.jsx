@@ -106,10 +106,10 @@ function ProveedorList() {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>NOMBRE</StyledTableCell>
-                <StyledTableCell align="right">CORREO</StyledTableCell>
-                <StyledTableCell align="right">TELOFONO</StyledTableCell>
-                <StyledTableCell align="right">ACCIONES</StyledTableCell>
+                <StyledTableCell>Nombre</StyledTableCell>
+                <StyledTableCell align="right">Correo</StyledTableCell>
+                <StyledTableCell align="right">Telefono</StyledTableCell>
+                <StyledTableCell align="right">Acciones</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>

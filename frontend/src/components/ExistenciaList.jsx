@@ -115,15 +115,15 @@ function ExistenciaList() {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>CATEGORIA</StyledTableCell>
-                <StyledTableCell align="right">PRODUCTO</StyledTableCell>
-                <StyledTableCell align="right">PROVEEDOR</StyledTableCell>
-                <StyledTableCell align="right">S.INICIAL</StyledTableCell>
-                <StyledTableCell align="right">S.ACTUAL</StyledTableCell>
-                <StyledTableCell align="right">P.COMPRA</StyledTableCell>
-                <StyledTableCell align="right">P.VENTA</StyledTableCell>
-                <StyledTableCell align="right">ENCARGADO</StyledTableCell>
-                <StyledTableCell align="right">ACCIONES</StyledTableCell>
+                <StyledTableCell>Categoria</StyledTableCell>
+                <StyledTableCell align="right">Producto</StyledTableCell>
+                <StyledTableCell align="right">Proveedor</StyledTableCell>
+                <StyledTableCell align="right">Stock Inicial</StyledTableCell>
+                <StyledTableCell align="right">Stock Actual</StyledTableCell>
+                <StyledTableCell align="right">Precio Compra</StyledTableCell>
+                <StyledTableCell align="right">Precio Venta</StyledTableCell>
+                <StyledTableCell align="right">Responsable</StyledTableCell>
+                <StyledTableCell align="right">Acciones</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -156,7 +156,7 @@ function ExistenciaList() {
                   <StyledTableCell align="right">
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="success"
                       onClick={() =>
                         handleOpenMovimiento(existencia, 'entrada')
                       }
@@ -166,7 +166,7 @@ function ExistenciaList() {
                     </Button>
                     <Button
                       variant="contained"
-                      color="secondary"
+                      color="error"
                       onClick={() => handleOpenMovimiento(existencia, 'salida')}
                     >
                       Salida

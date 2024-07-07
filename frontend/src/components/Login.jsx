@@ -34,7 +34,10 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export const Login = () => {
-  const [credentials, setCredentials] = useState({ nombre_usuario: '', clave_usuario: '' });
+  const [credentials, setCredentials] = useState({
+    nombre_usuario: '',
+    clave_usuario: ''
+  });
   const navigate = useNavigate();
 
   const handleChange = (e) => {

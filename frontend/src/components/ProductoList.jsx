@@ -127,13 +127,13 @@ function ProductoList() {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>NOMBRE</StyledTableCell>
-                <StyledTableCell align="right">PRECIO</StyledTableCell>
+                <StyledTableCell>Nombre</StyledTableCell>
+                <StyledTableCell align="right">Precio</StyledTableCell>
                 <StyledTableCell align="right">
-                  FECHA DE EXPIRACIÓN
+                  Fecha de Expiración
                 </StyledTableCell>
-                <StyledTableCell align="right">CATEGORÍA</StyledTableCell>
-                <StyledTableCell align="right">ACCIONES</StyledTableCell>
+                <StyledTableCell align="right">Categoría</StyledTableCell>
+                <StyledTableCell align="right">Acciones</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
