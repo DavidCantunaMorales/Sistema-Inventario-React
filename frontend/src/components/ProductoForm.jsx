@@ -7,10 +7,9 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography,
+  Typography
 } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 
 function ProductoForm({ productoId, onClose, onSave }) {
@@ -18,14 +17,11 @@ function ProductoForm({ productoId, onClose, onSave }) {
     id_categoria: '',
     nombre_producto: '',
     precio_producto: '',
-    fecha_expiracion_producto: '',
+    fecha_expiracion_producto: ''
   });
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingProducto, setLoadingProducto] = useState(false);
-
-  const navigate = useNavigate();
-  const params = useParams();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -46,7 +42,9 @@ function ProductoForm({ productoId, onClose, onSave }) {
       if (productoId) {
         setLoadingProducto(true);
         try {
-          const response = await fetch(`http://localhost:4000/productos/${productoId}`);
+          const response = await fetch(
+            `http://localhost:4000/productos/${productoId}`
+          );
           const data = await response.json();
           if (data && typeof data === 'object' && !Array.isArray(data)) {
             setProducto(data); // Establece el producto a editar
@@ -77,7 +75,7 @@ function ProductoForm({ productoId, onClose, onSave }) {
       const response = await fetch(url, {
         method: method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(producto),
+        body: JSON.stringify(producto)
       });
       await response.json();
       setLoading(false);
@@ -119,7 +117,10 @@ function ProductoForm({ productoId, onClose, onSave }) {
                       inputProps={{ style: { color: 'white' } }}
                     >
                       {categorias.map((categoria) => (
-                        <MenuItem key={categoria.id_categoria} value={categoria.id_categoria}>
+                        <MenuItem
+                          key={categoria.id_categoria}
+                          value={categoria.id_categoria}
+                        >
                           {categoria.nombre_categoria}
                         </MenuItem>
                       ))}

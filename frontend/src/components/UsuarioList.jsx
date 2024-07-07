@@ -181,7 +181,7 @@ function UsuarioList() {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} variant="contained" color="warning">
-              Cancelar
+              CANCELAR
             </Button>
           </DialogActions>
         </Dialog>
