@@ -170,7 +170,7 @@ function UsuarioList() {
 
         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
           <DialogTitle>
-            {editUserId ? 'Editar Usuario' : 'Crear Usuario'}
+            {editUserId ? 'EDITAR USUARIO' : 'CREAR USUARIO'}
           </DialogTitle>
           <DialogContent>
             <UsuarioForm
@@ -180,7 +180,7 @@ function UsuarioList() {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="secondary">
+            <Button onClick={handleClose} variant="contained" color="warning">
               Cancelar
             </Button>
           </DialogActions>
