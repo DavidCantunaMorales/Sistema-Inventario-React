@@ -14,119 +14,115 @@ const DashboardSistema = () => {
 
   const contarUsuarios = async () => {
     try {
-          const response = await fetch('http://localhost:4000/users');
-          const data = await response.json();
-          if (Array.isArray(data.usuarios)) {
-            setUsersCount(data.count);
-          } else {
-            console.error('Los datos de usuarios no son un array:', data);
-          }
-        } catch (error) {
-          console.error('Error al contar usuarios:', error);
-        }
-    }
-  
-    const contarRoles = async () => {
-      try {
-            const response = await fetch('http://localhost:4000/roles');
-            const data = await response.json();
-            if (Array.isArray(data.roles)) {
-              setRolesCount(data.count);
-            } else {
-              console.error('Los datos de roles no son un array:', data);
-            }
-          } catch (error) {
-            console.error('Error al contar roles:', error);
-          }
+      const response = await fetch('http://localhost:4000/users');
+      const data = await response.json();
+      if (Array.isArray(data.usuarios)) {
+        setUsersCount(data.count);
+      } else {
+        console.error('Los datos de usuarios no son un array:', data);
       }
+    } catch (error) {
+      console.error('Error al contar usuarios:', error);
+    }
+  };
 
-      const contarProveedor = async () => {
-        try {
-              const response = await fetch('http://localhost:4000/proveedores');
-              const data = await response.json();
-              if (Array.isArray(data.proveedores)) {
-                setProvidersCount(data.count);
-              } else {
-                console.error('Los datos de roles no son un array:', data);
-              }
-            } catch (error) {
-              console.error('Error al contar roles:', error);
-            }
-        }
+  const contarRoles = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/roles');
+      const data = await response.json();
+      if (Array.isArray(data.roles)) {
+        setRolesCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
-        const contarCategoria = async () => {
-          try {
-                const response = await fetch('http://localhost:4000/proveedores');
-                const data = await response.json();
-                if (Array.isArray(data.proveedores)) {
-                  setCategoriesCount(data.count);
-                } else {
-                  console.error('Los datos de roles no son un array:', data);
-                }
-              } catch (error) {
-                console.error('Error al contar roles:', error);
-              }
-          }
+  const contarProveedor = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/proveedores');
+      const data = await response.json();
+      if (Array.isArray(data.proveedores)) {
+        setProvidersCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
-          const contarProductos = async () => {
-            try {
-                  const response = await fetch('http://localhost:4000/productos');
-                  const data = await response.json();
-                  if (Array.isArray(data.productos)) {
-                    setProductsCount(data.count);
-                  } else {
-                    console.error('Los datos de roles no son un array:', data);
-                  }
-                } catch (error) {
-                  console.error('Error al contar roles:', error);
-                }
-            }
+  const contarCategoria = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/proveedores');
+      const data = await response.json();
+      if (Array.isArray(data.proveedores)) {
+        setCategoriesCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
-            const contarExistencia = async () => {
-              try {
-                    const response = await fetch('http://localhost:4000/existencias');
-                    const data = await response.json();
-                    if (Array.isArray(data.existencias)) {
-                      setExistencesCount(data.count);
-                    } else {
-                      console.error('Los datos de roles no son un array:', data);
-                    }
-                  } catch (error) {
-                    console.error('Error al contar roles:', error);
-                  }
-              }
+  const contarProductos = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/productos');
+      const data = await response.json();
+      if (Array.isArray(data.productos)) {
+        setProductsCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
-              const contarEntrada = async () => {
-                try {
-                      const response = await fetch('http://localhost:4000/entradas');
-                      const data = await response.json();
-                      if (Array.isArray(data.entradas)) {
-                        setEntriesCount(data.count);
-                      } else {
-                        console.error('Los datos de roles no son un array:', data);
-                      }
-                    } catch (error) {
-                      console.error('Error al contar roles:', error);
-                    }
-                }
+  const contarExistencia = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/existencias');
+      const data = await response.json();
+      if (Array.isArray(data.existencias)) {
+        setExistencesCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
-                const contarSalida = async () => {
-                  try {
-                        const response = await fetch('http://localhost:4000/salidas');
-                        const data = await response.json();
-                        if (Array.isArray(data.salidas)) {
-                          setExitsCount(data.count);
-                        } else {
-                          console.error('Los datos de roles no son un array:', data);
-                        }
-                      } catch (error) {
-                        console.error('Error al contar roles:', error);
-                      }
-                  }
-    
-  
+  const contarEntrada = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/entradas');
+      const data = await response.json();
+      if (Array.isArray(data.entradas)) {
+        setEntriesCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
- 
+  const contarSalida = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/salidas');
+      const data = await response.json();
+      if (Array.isArray(data.salidas)) {
+        setExitsCount(data.count);
+      } else {
+        console.error('Los datos de roles no son un array:', data);
+      }
+    } catch (error) {
+      console.error('Error al contar roles:', error);
+    }
+  };
 
   useEffect(() => {
     contarUsuarios();
@@ -140,11 +136,11 @@ const DashboardSistema = () => {
   }, []);
 
   return (
-    <>
+    <Box sx={{ display: 'flex' }}>
       <Navbar />
-      <Box mt={4} mx="auto" maxWidth={800}>
+      <Box mt={2} mx="auto" maxWidth={1000}>
         <Grid container spacing={4} justifyContent="center">
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={10} sm={6} md={3}>
             <Card>
               <CardContent>
                 <Typography variant="h6" color="textSecondary" gutterBottom>
@@ -242,7 +238,7 @@ const DashboardSistema = () => {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 };
 

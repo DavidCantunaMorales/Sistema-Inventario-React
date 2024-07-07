@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
-import { Box, CssBaseline, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@mui/material';
-import { Person as UserIcon, Store as StoreIcon, Inventory as InventoryIcon, Payment as PaymentIcon, Close as CloseIcon, Home as HomeIcon } from '@mui/icons-material';
+import { useState, useEffect } from 'react';
+import {
+  Box,
+  CssBaseline,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+  Tooltip
+} from '@mui/material';
+import {
+  Person as UserIcon,
+  Store as StoreIcon,
+  Inventory as InventoryIcon,
+  Payment as PaymentIcon,
+  Close as CloseIcon,
+  Home as HomeIcon
+} from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const tipoUsuario = localStorage.getItem('tipoUsuario');
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [tipoUsuario, setTipoUsuario] = useState(
+    localStorage.getItem('tipoUsuario')
+  );
+
+  useEffect(() => {
+    if (!tipoUsuario) {
+      navigate('/'); // Redirigir a la página de inicio si no hay tipo de usuario.
+    }
+  }, [tipoUsuario, navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('usuarioId');
     localStorage.removeItem('tipoUsuario');
+    setTipoUsuario(null);
     navigate('/');
   };
 
@@ -28,7 +54,7 @@ const Navbar = () => {
   const renderMenuItems = () => {
     const menuItems = [];
 
-    if (tipoUsuario === '1') { // Administrador
+    if (tipoUsuario === '1') {
       menuItems.push(
         { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
         { text: 'Usuarios', icon: <UserIcon />, link: '/dashUser' },
@@ -38,21 +64,29 @@ const Navbar = () => {
         { text: 'Existencias', icon: <PaymentIcon />, link: '/dashExistencia' },
         { text: 'Entradas', icon: <PaymentIcon />, link: '/dashEntrada' },
         { text: 'Salidas', icon: <PaymentIcon />, link: '/dashSalida' },
-        { text: 'Existencias Mínimas', icon: <PaymentIcon />, link: '/reporteMinExis' }
+        {
+          text: 'Existencias Mínimas',
+          icon: <PaymentIcon />,
+          link: '/reporteMinExis'
+        }
       );
-    } else if (tipoUsuario === '2') { // Bodega
+    } else if (tipoUsuario === '2') {
       menuItems.push(
         { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
         { text: 'Existencias', icon: <PaymentIcon />, link: '/dashExistencia' }
       );
-    } else if (tipoUsuario === '3') { // Gerente
+    } else if (tipoUsuario === '3') {
       menuItems.push(
         { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
         { text: 'Entradas', icon: <PaymentIcon />, link: '/dashEntrada' },
         { text: 'Salidas', icon: <PaymentIcon />, link: '/dashSalida' },
-        { text: 'Existencias Mínimas', icon: <PaymentIcon />, link: '/reporteMinExis' }
+        {
+          text: 'Existencias Mínimas',
+          icon: <PaymentIcon />,
+          link: '/reporteMinExis'
+        }
       );
-    } else if (tipoUsuario === '4') { // Gestor
+    } else if (tipoUsuario === '4') {
       menuItems.push(
         { text: 'Dashboard', icon: <HomeIcon />, link: '/dashboard' },
         { text: 'Proveedores', icon: <StoreIcon />, link: '/dashProveedor' },
@@ -64,37 +98,40 @@ const Navbar = () => {
     return (
       <List sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         {menuItems.map((item, index) => (
-          <ListItem
-            key={index}
-            button
-            component={item.link ? Link : 'button'}
-            to={item.link}
-            onClick={item.action}
-            sx={{
-              '&:hover': {
-                backgroundColor: '#2c3848',
-                '& .MuiListItemIcon-root': {
-                  color: '#FFF'
+          <Tooltip key={index} title={item.text} arrow placement="right">
+            <ListItem
+              button
+              component={Link}
+              to={item.link}
+              onClick={item.action}
+              sx={{
+                '&:hover': {
+                  backgroundColor: '#2c3848',
+                  '& .MuiListItemIcon-root': {
+                    color: '#FFF'
+                  },
+                  '& .MuiListItemText-primary': {
+                    color: '#FFF'
+                  }
                 },
-                '& .MuiListItemText-primary': {
-                  color: '#FFF'
-                }
-              },
-              backgroundColor: hoveredItem === index ? '#2c3848' : 'transparent'
-            }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <ListItemIcon sx={{ color: '#FFF' }}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItem>
+                backgroundColor:
+                  hoveredItem === index ? '#2c3848' : 'transparent'
+              }}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <ListItemIcon sx={{ color: '#FFF' }}>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          </Tooltip>
         ))}
-        <Divider /> {/* Añade una línea divisoria después de los elementos del menú */}
+        <Divider />
         <ListItem
           button
           onClick={handleLogout}
           sx={{
-            backgroundColor: hoveredItem === menuItems.length ? '#2c3848' : 'transparent',
+            backgroundColor:
+              hoveredItem === menuItems.length ? '#2c3848' : 'transparent',
             marginTop: 'auto',
             '&:hover': {
               backgroundColor: '#2c3848',
