@@ -65,8 +65,8 @@ export const Login = () => {
           'ID de usuario y tipo de usuario guardados en localStorage:',
           data.usuarioId,
           data.tipoUsuario
-        ); // Nuevo: imprimir el tipo de usuario en la consola
-        // navigate('/principal');
+        ); 
+        
         navigate('/dashboard');
       } else {
         alert(data.message);
