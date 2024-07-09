@@ -25,12 +25,13 @@ import {
   Close as CloseIcon
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
+
 import adminImage from '../assets/images/admin.png';
 import bodegaImage from '../assets/images/bodega.png';
 import gerenteImage from '../assets/images/gerente.png';
 import gestorImage from '../assets/images/gestor.png';
 
-const drawerWidth = 265;
+const drawerWidth = 240;
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -101,14 +102,7 @@ const Navbar = () => {
           icon: <ProductionQuantityLimitsIcon />,
           link: '/dashProducto'
         },
-        { text: 'Existencias', icon: <Assignment />, link: '/dashExistencia' },
-        { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
-        { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
-        {
-          text: 'Existencias Mínimas',
-          icon: <ReportIcon />,
-          link: '/reporteMinExis'
-        }
+        { text: 'Existencias', icon: <Assignment />, link: '/dashExistencia' }
       );
     } else if (tipoUsuario === '2') {
       menuItems.push(
@@ -154,6 +148,7 @@ const Navbar = () => {
               button
               component={Link}
               to={item.link}
+              onClick={item.action}
               sx={{
                 '&:hover': {
                   backgroundColor: '#2c3848',
