@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   CssBaseline,
@@ -9,7 +9,8 @@ import {
   ListItemText,
   Divider,
   Tooltip,
-  Avatar
+  Avatar,
+  Tooltip
 } from '@mui/material';
 import {
   Dashboard as DashboardIcon,
@@ -25,7 +26,6 @@ import {
   Close as CloseIcon
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
-
 import adminImage from '../assets/images/admin.png';
 import bodegaImage from '../assets/images/bodega.png';
 import gerenteImage from '../assets/images/gerente.png';
@@ -54,6 +54,13 @@ const Navbar = () => {
         }
       };
       fetchUserInfo();
+  const [tipoUsuario, setTipoUsuario] = useState(
+    localStorage.getItem('tipoUsuario')
+  );
+
+  useEffect(() => {
+    if (!tipoUsuario) {
+      navigate('/'); // Redirigir a la página de inicio si no hay tipo de usuario.
     }
   }, [tipoUsuario, navigate]);
 
@@ -92,6 +99,29 @@ const Navbar = () => {
         { text: 'Categorías', icon: <CategoryIcon />, link: '/dashCategoria' },
         { text: 'Productos', icon: <ProductionQuantityLimitsIcon />, link: '/dashProducto' },
         { text: 'Existencias', icon: <Assignment />, link: '/dashExistencia' },
+        {
+          text: 'Proveedores',
+          icon: <LocalShipping />,
+          link: '/dashProveedor'
+        },
+        { text: 'Categorías', icon: <CategoryIcon />, link: '/dashCategoria' },
+        {
+          text: 'Productos',
+          icon: <ProductionQuantityLimitsIcon />,
+          link: '/dashProducto'
+        },
+        {
+          text: 'Existencias',
+          icon: <Assignment />,
+          link: '/dashExistencia'
+        },
+        { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
+        { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
+        {
+          text: 'Existencias Mínimas',
+          icon: <ReportIcon />,
+          link: '/reporteMinExis'
+        }
       );
     } else if (tipoUsuario === '2') {
       menuItems.push(
@@ -100,7 +130,11 @@ const Navbar = () => {
          { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
         { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
         { text: 'Existencias Mínimas', icon: <ReportIcon />, link: '/reporteMinExis' }
-
+        {
+          text: 'Existencias',
+          icon: <Assignment />,
+          link: '/dashExistencia'
+        }
       );
     } else if (tipoUsuario === '3') {
       menuItems.push(
@@ -108,11 +142,21 @@ const Navbar = () => {
         { text: 'Entradas', icon: <InputIcon />, link: '/dashEntrada' },
         { text: 'Salidas', icon: <OutputIcon />, link: '/dashSalida' },
         { text: 'Existencias Mínimas', icon: <ReportIcon />, link: '/reporteMinExis' }
+        {
+          text: 'Existencias Mínimas',
+          icon: <ReportIcon />,
+          link: '/reporteMinExis'
+        }
       );
     } else if (tipoUsuario === '4') {
       menuItems.push(
         { text: 'Dashboard', icon: <DashboardIcon />, link: '/dashboard' },
         { text: 'Proveedores', icon: <LocalShipping />, link: '/dashProveedor' },
+        {
+          text: 'Proveedores',
+          icon: <LocalShipping />,
+          link: '/dashProveedor'
+        },
         { text: 'Categorías', icon: <InventoryIcon />, link: '/dashCategoria' },
         { text: 'Productos', icon: <InventoryIcon />, link: '/dashProducto' }
       );

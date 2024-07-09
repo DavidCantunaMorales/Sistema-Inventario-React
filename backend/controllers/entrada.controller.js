@@ -24,10 +24,10 @@ export const createEntrada = async (req, res, next) => {
 
     // Si la relación no existe, crearla
     if (result.rowCount === 0) {
-      await pool.query(
-        'INSERT INTO gestiona (id_usuario, id_existencia) VALUES ($1, $2)',
-        [id_usuario, id_existencia]
-      );
+      await pool.query('INSERT INTO gestiona (id_usuario, id_existencia) VALUES ($1, $2)', [
+        id_usuario,
+        id_existencia
+      ]);
     }
 
     res.json(newEntrada.rows[0]);
@@ -75,7 +75,6 @@ export const countEntradas = async () => {
   return parseInt(result.rows[0].count, 10);
 };
 
-
 export const getEntrada = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -95,8 +94,12 @@ export const updateEntrada = async (req, res, next) => {
     const { id_existencia, cantidad_entrada, fecha_entrada } = req.body;
 
     // Obtener la entrada actual para determinar la diferencia en la cantidad
-    const currentEntrada = await pool.query('SELECT cantidad_entrada FROM entrada WHERE id_entrada = $1', [id]);
-    if (currentEntrada.rows.length === 0) return res.status(404).json({ message: 'Entrada not found' });
+    const currentEntrada = await pool.query(
+      'SELECT cantidad_entrada FROM entrada WHERE id_entrada = $1',
+      [id]
+    );
+    if (currentEntrada.rows.length === 0)
+      return res.status(404).json({ message: 'Entrada not found' });
 
     const currentCantidadEntrada = currentEntrada.rows[0].cantidad_entrada;
     const cantidadDiferencia = cantidad_entrada - currentCantidadEntrada;
@@ -124,8 +127,12 @@ export const deleteEntrada = async (req, res, next) => {
     const { id } = req.params;
 
     // Obtener la entrada actual para determinar la cantidad a restar del stock
-    const currentEntrada = await pool.query('SELECT id_existencia, cantidad_entrada FROM entrada WHERE id_entrada = $1', [id]);
-    if (currentEntrada.rows.length === 0) return res.status(404).json({ message: 'Entrada not found' });
+    const currentEntrada = await pool.query(
+      'SELECT id_existencia, cantidad_entrada FROM entrada WHERE id_entrada = $1',
+      [id]
+    );
+    if (currentEntrada.rows.length === 0)
+      return res.status(404).json({ message: 'Entrada not found' });
 
     const { id_existencia, cantidad_entrada } = currentEntrada.rows[0];
 
@@ -143,6 +150,3 @@ export const deleteEntrada = async (req, res, next) => {
     next(error);
   }
 };
-
-
-

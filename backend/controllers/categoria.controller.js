@@ -30,15 +30,12 @@ export const getAllCategorias = async (req, res, next) => {
   }
 };
 
-export const getCategoria = async (req, res,next) => {
+export const getCategoria = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await pool.query('SELECT * FROM categoria WHERE id_categoria = $1', [
-      id
-    ]);
+    const result = await pool.query('SELECT * FROM categoria WHERE id_categoria = $1', [id]);
 
-    if (result.rows.length === 0)
-      return res.status(404).json({ message: 'Categoria not found' });
+    if (result.rows.length === 0) return res.status(404).json({ message: 'Categoria not found' });
 
     res.json(result.rows[0]);
   } catch (error) {
@@ -56,8 +53,7 @@ export const updateCategoria = async (req, res) => {
       [nombre_categoria, id]
     );
 
-    if (result.rows.length === 0)
-      return res.status(404).json({ message: 'Categoria not found' });
+    if (result.rows.length === 0) return res.status(404).json({ message: 'Categoria not found' });
 
     return res.json(result.rows[0]);
   } catch (error) {
@@ -70,12 +66,9 @@ export const deleteCategoria = async (req, res) => {
     const { id } = req.params;
     const result = await pool.query('DELETE FROM categoria WHERE id_categoria = $1', [id]);
 
-    if (result.rowCount === 0)
-      return res.status(404).json({ message: 'Categoria not found' });
+    if (result.rowCount === 0) return res.status(404).json({ message: 'Categoria not found' });
     return res.sendStatus(204);
   } catch (error) {
     next(error);
   }
 };
-
-
